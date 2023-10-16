@@ -35,12 +35,9 @@
     background-color: #fff;
     font-weight: 600;
     font-size: 0.9rem;
-    /* color: #0000000D; */
-    /* margin-left: 5px; */
 }
 
 .both a span {
-    /* position: absolute; */
     padding-left: -20px;
     margin-right: 5px;
 }

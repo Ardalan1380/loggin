@@ -3,16 +3,12 @@
     place-content: center; 
     justify-content: center;
     align-items: center;
-    /* border: 1px solid red; */
     max-width: 1350px;
     margin-right:100px;
     margin-top: 100px;
-    /* position: absolute; */
-    /* padding: auto 100px; */
 }
 
 .aside {
-    /* position: absolute; */
     background-image: url("../img/Rectangle.png");
     background-size: cover;
     width: 500px;
@@ -54,7 +50,6 @@
 .home {
     display: flex;
     border-radius: 10px;
-    /* gap: 10px; */
     margin-right: 400px ;
     border: 1px solid 
     #DADBE7;
@@ -81,7 +76,6 @@
 .main {
     display: flex;
     flex-direction: column;
-    /* gap: 10rem; */
     margin-right: 30px;
 }
 
@@ -105,10 +99,8 @@
 }
 
 .type {
-    /* display: flex; */
     display: block;
     margin: 70px auto;
-    /* flex-direction: column; */
 }
 
 .type label {

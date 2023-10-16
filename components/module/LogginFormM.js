@@ -31,11 +31,13 @@ const LogginFormM = () => {
                 <div className={styles.form}>
                     <label>برای ورود و عضویت در سایت شماره موبایل خود را وارد نمایید</label>
                     <input type='number' placeholder='شماره موبایل' inputMode="numeric" />
+                    <Link href="/welcome">
                    <button>ورودوعضویت</button>
+                    </Link>
                 </div>
             </div>
             <div className={styles.photo}>
-                <Image src={circle} height={350} width={350} />
+                <Image src={circle} height={350} width={350} alt='circle' />
             </div>
             <Footer />
        </div>

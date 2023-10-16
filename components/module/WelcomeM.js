@@ -12,10 +12,10 @@ const WelcomeM = () => {
     const inputRefs = inputValues.map(() => useRef());
     const enterCodeRef = useRef();
   
+    // functions for input code msg
     const nextInput = (index, endValue) => {
       if (index === 5) {
         enterCodeRef.current.click();
-        setIsLoading(1);
       } else {
         inputRefs[index + 1]?.current.focus();
       }
@@ -46,11 +46,9 @@ const WelcomeM = () => {
           nextInput(index, inputValue);
         }
       };
-  
-    const [isLoading, setIsLoading] = useState(0);
 
 
-    
+    // state font timer
 const [minutes, setMinutes] = useState(2);
 const [seconds, setSeconds] = useState(0);
 
@@ -122,7 +120,7 @@ useEffect(() => {
                       </div>
             </div>
             <div className={styles.photo}>
-                <Image src={circle} height={350} width={350} />
+                <Image src={circle} height={350} width={350} alt='circle' />
             </div>
             <Footer />
        </div>

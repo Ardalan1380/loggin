@@ -11,11 +11,14 @@ const WelcomD = () => {
     const [inputValues, setInputValues] = useState(['', '', '', '']);
     const inputRefs = inputValues.map(() => useRef());
     const enterCodeRef = useRef();
+
+    //state fot min and second
+    const [minutes, setMinutes] = useState(2);
+    const [seconds, setSeconds] = useState(0);
   
     const nextInput = (index, endValue) => {
-      if (index === 5) {
+      if (index === 4) {
         enterCodeRef.current.click();
-        setIsLoading(1);
       } else {
         inputRefs[index + 1]?.current.focus();
       }
@@ -36,7 +39,7 @@ const WelcomD = () => {
         const inputValue = e.target.value;
         setInputValues((prevValues) => {
           const newInputValues = [...prevValues];
-          newInputValues[index] = inputValue; // Always update the value
+          newInputValues[index] = inputValue; 
           return newInputValues;
         });
       
@@ -46,13 +49,7 @@ const WelcomD = () => {
           nextInput(index, inputValue);
         }
       };
-  
-    const [isLoading, setIsLoading] = useState(0);
 
-
-    
-const [minutes, setMinutes] = useState(2);
-const [seconds, setSeconds] = useState(0);
 
 // Function to convert numbers to Persian (Farsi) numerals
 const toPersianNumerals = (number) => {
@@ -124,13 +121,12 @@ useEffect(() => {
                    <Link href="/welcome">
                    <button>تایید حساب</button>
                    </Link>
-                   </div>
-
                    <p>
                    ارسال مجدد کد تا : <span>
                     {toPersianNumerals(seconds).padStart(2, '۰')} : {toPersianNumerals(minutes).padStart(2, '۰')} 
                     </span>
                    </p>
+                   </div>
                    </div>
                </div>
            </div>

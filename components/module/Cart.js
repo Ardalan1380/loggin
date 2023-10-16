@@ -14,22 +14,22 @@ const Cart = () => {
         <div className={styles.container}>
             
             <div>
-            <Image src={difftence} width={100} height={100} />
+            <Image src={difftence} width={100} height={100} alt='diffrence' />
             <p>تنوع بالای <span>محصولات</span></p>
             </div>
 
             <div>
-            <Image src={pleasure} width={100} height={100} />
+            <Image src={pleasure} width={100} height={100} alt='pleasure' />
             <p>بیش از 1K<span>مشتزی راضی</span></p>
             </div>
 
             <div>
-            <Image src={tick} width={100} height={100} />
+            <Image src={tick} width={100} height={100} alt='tick'/>
             <p>محصولات با کیفیت <span>و اورجینال</span></p>
             </div>
 
             <div>
-            <Image src={dioment} width={100} height={100} />
+            <Image src={dioment} width={100} height={100} alt='dioment' />
             <p>بالای 10 سال تجربه<span>فروش محصولات</span></p>
             </div>
             
