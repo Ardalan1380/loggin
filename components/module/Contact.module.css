@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-direction: column;    
+    padding: 10px;
+    gap: 1rem;
+}
+
+.container div {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.container h2 {
+    margin: 20px 0;
+    color: #fff;
+}
+
+.container p {
+    color: #fff;
+}

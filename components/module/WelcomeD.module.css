@@ -1,0 +1,175 @@
+.container {
+    display: flex;
+    place-content: center; 
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    max-width: 1350px;
+    margin-right:100px;
+    margin-top: 100px;
+    /* position: absolute; */
+    /* padding: auto 100px; */
+}
+
+.aside {
+    /* position: absolute; */
+    background-image: url("../img/Rectangle.png");
+    background-size: cover;
+    width: 500px;
+    height: 700px;
+    display:grid;
+    place-content: center;
+}
+
+
+
+.aside span {
+    font-weight: 600;
+}
+
+
+
+.aside .brand {
+    position: absolute;
+    margin: 30px 100px;
+    font-size: 1.2em;
+}
+
+.aside .brand .size {
+    font-size: 1.8rem;
+}
+
+.aside div {
+    display: flex;
+    justify-content: center;
+    border: 3px dashed #fff;
+    border-radius: 50%;
+    width: 280px;
+}
+
+.aside .first {
+    padding: 40px;
+}
+
+.home {
+    display: flex;
+    border-radius: 10px;
+    /* gap: 10px; */
+    margin-right: 400px ;
+    border: 1px solid 
+    #DADBE7;
+    padding: 8px 15px ;
+    margin-bottom: 150px;
+}
+
+.home a {
+    text-decoration: none;
+    color: inherit;
+    text-align:left;
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+
+.home span {
+    margin-top: 5px;
+}
+
+.form {
+    margin-bottom: 100px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    /* gap: 10rem; */
+    margin-right: 30px;
+}
+
+.text {
+    line-height: 10px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    line-height: 40px;
+}
+
+.text h2 {
+    font-weight: 900;
+    font-size: 2rem;
+    text-align: right;
+    color: #141414;
+}
+
+.text p {
+    font-size: 1rem;
+    color: #3D3D3D;
+    font-weight: 400;
+}
+
+.type {
+    /* display: flex; */
+    display: block;
+    margin: 70px auto;
+    /* flex-direction: column; */
+}
+
+.type label {
+    color: #3D3D3D;
+    font-size: 1.1rem;
+}
+
+.type input {
+    margin: 20px 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: #F7F7F7;
+    border: none;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.type input:focus {
+    outline: none;
+}
+
+
+.type input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.type input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.type input[type=number]{
+    -moz-appearance: textfield;
+}
+
+
+.last {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+
+.last button {
+    width: 150px;
+    height: 50px;
+    border: none;
+    padding: 16px 30px;
+    border-radius: 10px;
+    background-color: #ED2425;
+    color: #fff;
+    font-size: 16px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.last p {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.last p span {
+    color: red;
+}

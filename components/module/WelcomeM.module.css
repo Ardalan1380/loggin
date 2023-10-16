@@ -1,0 +1,146 @@
+.container {
+    position: relative;
+    height: 900px;
+}
+
+
+.main {
+    background-image: url("../img/Rectangle.png");
+    min-height: 700px;
+    position: relative;
+}
+
+.both {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.both p {
+    font-size: 1.2rem;
+}
+
+.both p span {
+    font-weight: 600;
+}
+
+.both a {
+    color: inherit;
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    /* color: #0000000D; */
+    /* margin-left: 5px; */
+}
+
+.both a span {
+    /* position: absolute; */
+    padding-left: -20px;
+    margin-right: 5px;
+}
+
+
+.text {
+    padding: 0 20px;
+    margin-bottom: 20px;
+    line-height: 35px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.text h2 {
+    color: #141414;
+}
+
+.text p {
+    color: #3D3D3D;
+    font-size: 0.9rem;
+}
+
+
+.form {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: block;
+    margin: 10px auto;
+    padding: 30px 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: right;
+    width: 350px;
+    height: 250px;
+}
+.form label {
+    /* width: 200px; */
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #3D3D3D;
+}
+
+.form input {
+    margin: 40px 10px;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    border: none;
+    background-color: #F7F7F7;
+    font-size: 1.2rem;
+}
+
+
+.form input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.form input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.form input[type=number]{
+    -moz-appearance: textfield;
+}
+
+
+.last {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.last p {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.last p span {
+    color: red;
+}
+
+.form button {
+    width: 100px;
+    height: 50px;
+    border: none;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #ED2425;
+    color: #fff;
+    font-size: 16px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+.photo {
+    position: absolute;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -190px;
+    margin-right: 10px;
+}

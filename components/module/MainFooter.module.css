@@ -1,0 +1,68 @@
+.container{ 
+
+}
+.background {
+    background-color: hsl(0, 0%, 8%);
+    width: 100%;
+    min-height: 800px;
+    /* margin-top: -325px; */
+    /* margin-bottom: 200px; */
+    /* border-radius: 10px; */
+}
+
+
+.red {
+    display: flex;
+    justify-content: center;
+    /* position: absolute; */
+    align-items: center;
+    margin: auto;
+    background-image: url("../img/red.png");
+    width: 370px;
+    background-size: cover;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.red h6 {
+    color: #fff;
+    margin-bottom: 10px;
+    margin-left: 200px;
+    font-size: 1rem;
+}
+
+.red h6 span {
+    font-size: 1.2rem;
+}
+
+.red p {
+    color: #ffffff;
+    line-height: 20px;
+    width: 240px;
+    /* height: 90px; */
+    text-align: justify;
+}
+
+
+.middle {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.line {
+    width: 90%;
+    background-color: #2b2b2b;
+    height: 2px;
+    margin: auto;
+}
+
+.last {
+    margin: 20px 0;
+    color: #fff;
+    text-align: center;
+    padding-bottom: 20px;
+}
