@@ -6,11 +6,17 @@ import {BsArrowLeft} from "react-icons/bs"
 import circle from "../img/Group.png"
 import Link from 'next/link';
 import Image from 'next/image';
+import { toPersianNumerals } from 'helper/function';
+import { useRouter } from 'next/router';
+import Timer from './Timer';
 
 const WelcomeM = () => {
     const [inputValues, setInputValues] = useState(['', '', '', '']);
     const inputRefs = inputValues.map(() => useRef());
     const enterCodeRef = useRef();
+    const router = useRouter();
+    const phoneNumber = router.query.phoneNumber
+    console.log(phoneNumber)
   
     // functions for input code msg
     const nextInput = (index, endValue) => {
@@ -53,10 +59,7 @@ const [minutes, setMinutes] = useState(2);
 const [seconds, setSeconds] = useState(0);
 
 // Function to convert numbers to Persian (Farsi) numerals
-const toPersianNumerals = (number) => {
-  const persianNumerals = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-  return number.toString().replace(/\d/g, (match) => persianNumerals[match]);
-};
+
 
 const tick = () => {
   if (minutes === 0 && seconds === 0) {
@@ -80,6 +83,21 @@ useEffect(() => {
 }, [minutes, seconds]);
 
 
+
+const clickHandler = async () => {
+  const verificationCode = inputValues.join("");
+  const formData = new FormData;
+  formData.append("code", verificationCode);
+  formData.append("phone" , phoneNumber)
+  // formData.append("phone")
+  const res = await fetch("https://shikast.com/api/auth/v1/verify", {
+    method: "POST",
+    body: formData
+  })
+  const data = await res.json()
+  console.log(data);
+}
+
     return (
         <div className={styles.container}>
             <div className={styles.main}>
@@ -98,6 +116,7 @@ useEffect(() => {
                 </div>
                 <div className={styles.form}>
                 <label>کد تایید برای شماره ۰۹۱۰۹۳۰۸۷۲۰ ارسال شده است</label> <br />
+                <div dir='ltr'>
                   {inputValues.map((input, index) => (
                       <input
                       value={input}
@@ -109,13 +128,15 @@ useEffect(() => {
                       inputMode="numeric"
                       />
                       ))}
+                </div>
                       <div className={styles.last}>
-                   <button>ورودوعضویت</button>
-                <p>
+                   <button onClick={clickHandler}>تایید حساب</button>
+                {/* <p>
                    ارسال مجدد کد تا : <span>
                     {toPersianNumerals(seconds).padStart(2, '۰')} : {toPersianNumerals(minutes).padStart(2, '۰')} 
                     </span>
-                   </p>
+                   </p> */}
+                   <Timer />
                 </div>
                       </div>
             </div>

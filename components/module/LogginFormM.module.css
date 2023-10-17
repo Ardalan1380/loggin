@@ -89,6 +89,10 @@
     padding: 10px;
 }
 
+.form input:focus {
+    outline: none;
+}
+
 
 .type input::-webkit-outer-spin-button {
     -webkit-appearance: none;

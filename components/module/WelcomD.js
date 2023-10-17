@@ -6,15 +6,20 @@ import {BsArrowLeft} from "react-icons/bs"
 import circle from "../img/Group.png"
 import Image from 'next/image';
 import Link from 'next/link';
+import Timer from './Timer';
+import { useRouter } from 'next/router';
+import axios from 'axios';
 
 const WelcomD = () => {
     const [inputValues, setInputValues] = useState(['', '', '', '']);
     const inputRefs = inputValues.map(() => useRef());
     const enterCodeRef = useRef();
-
+    const router = useRouter();
+    const phoneNumber = router.query.phoneNumber
+    console.log(phoneNumber)
     //state fot min and second
-    const [minutes, setMinutes] = useState(2);
-    const [seconds, setSeconds] = useState(0);
+    // const [minutes, setMinutes] = useState(2);
+    // const [seconds, setSeconds] = useState(0);
   
     const nextInput = (index, endValue) => {
       if (index === 4) {
@@ -50,34 +55,31 @@ const WelcomD = () => {
         }
       };
 
+      const clickHandler = async () => {
+        const verificationCode = inputValues.join("");
+        const formData = new FormData;
+        formData.append("code", verificationCode);
+        formData.append("phone" , phoneNumber)
+        // formData.append("phone")
+        const res = await fetch("https://shikast.com/api/auth/v1/verify", {
+          method: "POST",
+          body: formData
+        })
+        const data = await res.json()
+        console.log(data);
+        
+        // if(data.status === "error") {
+        //   console.log(data.message)
+        // }
+        
+        // axios.post("https://shikast.com/api/auth/v1/verify", formData)
+        // .then(res => console.log(res))
+        // .catch(e => console.log(e))
+      }
+      
 
-// Function to convert numbers to Persian (Farsi) numerals
-const toPersianNumerals = (number) => {
-  const persianNumerals = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-  return number.toString().replace(/\d/g, (match) => persianNumerals[match]);
-};
 
-const tick = () => {
-  if (minutes === 0 && seconds === 0) {
-    // Timer is done, reset all numbers to 0
-    setMinutes(0);
-    setSeconds(0);
-  } else if (seconds === 0) {
-    setMinutes(minutes - 1);
-    setSeconds(59);
-  } else {
-    setSeconds(seconds - 1);
-  }
-};
-
-useEffect(() => {
-  const timer = setInterval(tick, 1000);
-    
-  return () => {
-    clearInterval(timer);
-  };
-}, [minutes, seconds]);
-
+console.log(inputValues)
 
     return (
         <div className={styles.container}>
@@ -104,10 +106,12 @@ useEffect(() => {
                    <p>به شیکاست خوش آمدید</p>
                    </div>
                    <div className={styles.type}> 
-                   <label>کد تایید برای شماره ۰۹۱۰۹۳۰۸۷۲۰ ارسال شده است</label>
+                   <label>کد تایید برای شماره {phoneNumber} ارسال شده است</label>
                    <br />
+                   <div dir='ltr' className={styles.input}>
                   {inputValues.map((input, index) => (
                       <input
+                      
                       value={input}
                       ref={inputRefs[index]}
                       key={index}
@@ -117,15 +121,11 @@ useEffect(() => {
                       inputMode="numeric"
                       />
                       ))}
+                   </div>
                    <div className={styles.last}>
-                   <Link href="/welcome">
-                   <button>تایید حساب</button>
-                   </Link>
-                   <p>
-                   ارسال مجدد کد تا : <span>
-                    {toPersianNumerals(seconds).padStart(2, '۰')} : {toPersianNumerals(minutes).padStart(2, '۰')} 
-                    </span>
-                   </p>
+                   <button onClick={clickHandler}>تایید حساب</button>
+                  
+                   <Timer />
                    </div>
                    </div>
                </div>
