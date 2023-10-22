@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import styles from "./LogginFormM.module.css"
 
 
@@ -10,36 +9,36 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Footer from 'components/template/Footer';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 
 
 const LogginFormM = () => {
-    const router = useRouter()
+    const router = useRouter();
 
     const [number , setNumber] = useState('');
+    const [error , setError] = useState("");
 
     const clickHandler = async () => {
         const formData = new FormData();
         formData.append("register_phone", number);
-        //  axios.post("https://shikast.com/api/auth/v1/loginRegister", formData)
-        //   .then(res => console.log(setNumber(res)))
-        //     .catch(e => console.log(e))
-        const res = await fetch("https://shikast.com/api/auth/v1/loginRegister" , {
-            method:"POST",
-            body:formData,    
-        })
-        const data = await res.json();
-        // console.log(data.phone)
-        if (res.status === 200) {
-            router.push({
-              pathname: '/welcome',
-              query: { phoneNumber: data.phone }, // Pass the data as a query parameter
+         axios.post("https://shikast.com/api/auth/v1/loginRegister", formData)
+          .then(res => {
+            if(res.status === 200) {
+                router.push({
+                    pathname: '/welcome',
+                    query: {phoneNumber : res.data.phone}
+                })
+            }
+          })
+            .catch(e => {
+                console.log(e);
+                setError("فرمت وارد شده صحیح نمی‌باشد")
             });
-          }
-        ;
         
       }
+
     const changeHandler = (e) => {
-        setNumber(e.target.value)
+        setNumber(e.target.value);
     }
 
     return (
@@ -67,6 +66,15 @@ const LogginFormM = () => {
                     value={number}
                     onChange={changeHandler}
                     />
+
+                    {
+                       <p className={styles.error}>
+                            {
+                                error
+                            }
+                        </p>
+                    }
+                    
                     {/* <Link href="/welcome"> */}
                    <button onClick={clickHandler}>ورودوعضویت</button>
                     {/* </Link> */}

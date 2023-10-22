@@ -72,7 +72,7 @@
     border-radius: 10px;
     text-align: right;
     width: 350px;
-    height: 200px;
+    height: 250px;
 }
 .form label {
     width: 250px;
@@ -119,6 +119,13 @@
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 600;
     cursor: pointer;
+}
+
+.error {
+    margin: 20px 0;
+    color: red;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .photo {

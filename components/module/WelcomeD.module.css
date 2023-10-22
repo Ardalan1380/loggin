@@ -61,8 +61,10 @@
     font-size: 1.3rem;
 }
 
-.home span {
-    margin-top: 5px;
+.home a span {
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .form {
@@ -176,6 +178,9 @@
     cursor: pointer;
 }
 
+.last button:hover {
+    background-color: #f05151;
+}
 
 .last p {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -183,4 +188,12 @@
 
 .last p span {
     color: red;
+}
+
+
+.error {
+    margin: 20px 0;
+    color: red;
+    font-size: 1.2rem;
+    font-weight: 500;
 }

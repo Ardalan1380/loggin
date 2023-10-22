@@ -9,9 +9,11 @@ import Image from 'next/image';
 import { toPersianNumerals } from 'helper/function';
 import { useRouter } from 'next/router';
 import Timer from './Timer';
+import axios from 'axios';
 
 const WelcomeM = () => {
     const [inputValues, setInputValues] = useState(['', '', '', '']);
+    const [error , setError] = useState("")
     const inputRefs = inputValues.map(() => useRef());
     const enterCodeRef = useRef();
     const router = useRouter();
@@ -53,49 +55,22 @@ const WelcomeM = () => {
         }
       };
 
-
-    // state font timer
-const [minutes, setMinutes] = useState(2);
-const [seconds, setSeconds] = useState(0);
-
-// Function to convert numbers to Persian (Farsi) numerals
-
-
-const tick = () => {
-  if (minutes === 0 && seconds === 0) {
-    // Timer is done, reset all numbers to 0
-    setMinutes(0);
-    setSeconds(0);
-  } else if (seconds === 0) {
-    setMinutes(minutes - 1);
-    setSeconds(59);
-  } else {
-    setSeconds(seconds - 1);
-  }
-};
-
-useEffect(() => {
-  const timer = setInterval(tick, 1000);
-    
-  return () => {
-    clearInterval(timer);
-  };
-}, [minutes, seconds]);
-
-
-
 const clickHandler = async () => {
   const verificationCode = inputValues.join("");
   const formData = new FormData;
   formData.append("code", verificationCode);
   formData.append("phone" , phoneNumber)
   // formData.append("phone")
-  const res = await fetch("https://shikast.com/api/auth/v1/verify", {
-    method: "POST",
-    body: formData
+   
+  axios.post("https://shikast.com/api/auth/v1/verify", formData)
+  .then( () => router.push({
+    pathname: "/dashboard" ,
+    query:{phoneNumber:phoneNumber}
+  }))
+  .catch(e => {
+    console.log(e)
+    setError("کد وارد شده صحیح نیست یا منقضی شده است")
   })
-  const data = await res.json()
-  console.log(data);
 }
 
     return (
@@ -131,13 +106,12 @@ const clickHandler = async () => {
                 </div>
                       <div className={styles.last}>
                    <button onClick={clickHandler}>تایید حساب</button>
-                {/* <p>
-                   ارسال مجدد کد تا : <span>
-                    {toPersianNumerals(seconds).padStart(2, '۰')} : {toPersianNumerals(minutes).padStart(2, '۰')} 
-                    </span>
-                   </p> */}
+               
                    <Timer />
                 </div>
+                <p className={styles.error}>
+                  {error}
+                </p>
                       </div>
             </div>
             <div className={styles.photo}>

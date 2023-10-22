@@ -1,17 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from "./WelcomeD.module.css"
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 
 import {BsArrowLeft} from "react-icons/bs"
 import circle from "../img/Group.png"
 import Image from 'next/image';
-import Link from 'next/link';
 import Timer from './Timer';
-import { useRouter } from 'next/router';
 import axios from 'axios';
 
 const WelcomD = () => {
     const [inputValues, setInputValues] = useState(['', '', '', '']);
+    const [error , setError] = useState("");
     const inputRefs = inputValues.map(() => useRef());
     const enterCodeRef = useRef();
     const router = useRouter();
@@ -60,21 +61,16 @@ const WelcomD = () => {
         const formData = new FormData;
         formData.append("code", verificationCode);
         formData.append("phone" , phoneNumber)
-        // formData.append("phone")
-        const res = await fetch("https://shikast.com/api/auth/v1/verify", {
-          method: "POST",
-          body: formData
+        
+        axios.post("https://shikast.com/api/auth/v1/verify", formData)
+        .then( () => router.push({
+          pathname: "/dashboard" ,
+          query:{phoneNumber:phoneNumber}
+        }))
+        .catch(e => {
+          console.log(e)
+          setError("کد وارد شده صحیح نیست یا منقضی شده است")
         })
-        const data = await res.json()
-        console.log(data);
-        
-        // if(data.status === "error") {
-        //   console.log(data.message)
-        // }
-        
-        // axios.post("https://shikast.com/api/auth/v1/verify", formData)
-        // .then(res => console.log(res))
-        // .catch(e => console.log(e))
       }
       
 
@@ -93,10 +89,10 @@ console.log(inputValues)
                <div className={styles.home  }>
                <Link href="/">
                    بازگشت به خانه&nbsp;
-               </Link>
                <span>
                <BsArrowLeft />
                </span>
+               </Link>
                </div>
                <div className={styles.form}>
                    <div className={styles.text}>
@@ -122,6 +118,7 @@ console.log(inputValues)
                       />
                       ))}
                    </div>
+                    <p className={styles.error}>{error}</p>
                    <div className={styles.last}>
                    <button onClick={clickHandler}>تایید حساب</button>
                   
